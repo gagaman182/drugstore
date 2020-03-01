@@ -1,4 +1,5 @@
 <?php
+	header('Content-Type: application/json');
    $q = $_GET["q"];
   // $q = '2632/49';
 
