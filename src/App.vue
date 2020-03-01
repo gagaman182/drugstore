@@ -22,7 +22,7 @@
            <b-icon icon="person-fill"></b-icon> <em>{{form.token[0].fullname}}</em>
           </template>
          
-          <b-dropdown-item @click='signout()'>ออกจากระบบ</b-dropdown-item>
+          <b-dropdown-item @click='signout()'>ออกจากระบบ </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>
