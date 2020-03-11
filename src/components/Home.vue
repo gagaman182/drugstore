@@ -497,7 +497,7 @@
         this.form.drugrefill6m = moment(value.opdtime, 'YYYY/MM/DD ').add('days', 120).format('YYYY/MM/DD ')
         this.form.startvnuse = value.vn
 
-        axios.get('http://192.168.4.3/webapp/tee/drugs//diag.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/diag.php', {
             params: {
               hn: this.search,
               vn: value.vn
@@ -510,7 +510,7 @@
           .catch(e => {
             this.errors.push(e)
           })
-        axios.get('http://192.168.4.3/webapp/tee/drugs//drug.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/drug.php', {
             params: {
               hn: this.search,
               vn: value.vn
@@ -605,7 +605,7 @@
       // หา hn 
       searchHN: function () {
         if (this.search != '') {
-          axios.get('http://192.168.4.3/webapp/tee/drugs//data.php', {
+          axios.get('http://192.168.4.3/webapp/tee/drugs/data.php', {
               params: {
                 hn: this.search
               }
@@ -635,7 +635,7 @@
       //เพิ่มผู้ป่วย
       addperson: function () {
         if (this.hn != '') {
-          axios.get('http://192.168.4.3/webapp/tee/drugs//addperson.php', {
+          axios.get('http://192.168.4.3/webapp/tee/drugs/addperson.php', {
               params: {
                 hn: this.searchs[0].hn,
                 name: this.searchs[0].name,
@@ -676,7 +676,7 @@
 
           // add in diags table
           for (this.idiag = 0; this.idiag < this.diag.length; this.idiag++) {
-            axios.get('http://192.168.4.3/webapp/tee/drugs//adddiag.php', {
+            axios.get('http://192.168.4.3/webapp/tee/drugs/adddiag.php', {
                 params: {
                   icdcode: this.diag[this.idiag].ICD_CODE,
                   icdtype: this.diag[this.idiag].NAME,
@@ -692,7 +692,7 @@
           }
           // add in drugs table
           for (this.idrug = 0; this.idrug < this.drug.length; this.idrug++) {
-            axios.get('http://192.168.4.3/webapp/tee/drugs//adddrug.php', {
+            axios.get('http://192.168.4.3/webapp/tee/drugs/adddrug.php', {
                 params: {
                   drugcode: this.drug[this.idrug].CODE,
                   drugname: this.drug[this.idrug].NAME,
@@ -710,7 +710,7 @@
           }
 
           // get num services
-          axios.get('http://192.168.4.3/webapp/tee/drugs//servicenum.php', {
+          axios.get('http://192.168.4.3/webapp/tee/drugs/servicenum.php', {
               params: {
                 vn: this.form.startvnuse
               }
@@ -744,7 +744,7 @@
       },
       vns: function () {
         // multiselect
-        axios.get('http://192.168.4.3/webapp/tee/drugs//vn.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/vn.php', {
             params: {
               hn: this.search
             }
@@ -796,7 +796,7 @@
       },
       allRecords(){
 
-        axios.get('http://192.168.4.3/webapp/tee/drugs//diagdrugrefresh.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/diagdrugrefresh.php', {
             params: {
               vn:'refresh'
             }
@@ -819,7 +819,7 @@
           
       // multiselect1
       axios
-        .get('http://192.168.4.3/webapp/tee/drugs//doctor.php')
+        .get('http://192.168.4.3/webapp/tee/drugs/doctor.php')
         .then(response => (this.options = response.data))
       // multiselect2
       this.vns()

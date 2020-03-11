@@ -161,7 +161,7 @@
             }else{
                
 
-            axios.get('http://192.168.4.3/webapp/tee/drugs//person_my_update_person.php', {
+            axios.get('http://192.168.4.3/webapp/tee/drugs/person_my_update_person.php', {
                     params: {
                         id: this.id
 
@@ -182,7 +182,7 @@
 
 
                     // multiselect vn code
-                    axios.get('http://192.168.4.3/webapp/tee/drugs//vn.php', {
+                    axios.get('http://192.168.4.3/webapp/tee/drugs/vn.php', {
                             params: {
                                 hn: this.hn
                             }
@@ -200,7 +200,7 @@
                     //doctor code from mysql
                 })
             axios
-                .get('http://192.168.4.3/webapp/tee/drugs//doctor.php')
+                .get('http://192.168.4.3/webapp/tee/drugs/doctor.php')
                 .then(response => (
                     this.options = response.data
                     // this.options = this.doctor
@@ -224,7 +224,7 @@
 
 
 
-                    axios.get('http://192.168.4.3/webapp/tee/drugs//person_my_delete.php', {
+                    axios.get('http://192.168.4.3/webapp/tee/drugs/person_my_delete.php', {
                             params: {
                                 id: this.id,
 

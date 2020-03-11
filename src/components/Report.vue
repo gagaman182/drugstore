@@ -134,13 +134,13 @@
         methods: {
             persontable() {
                 axios
-                    .get('http://192.168.4.3/webapp/tee/drugs//person_my.php')
+                    .get('http://192.168.4.3/webapp/tee/drugs/person_my.php')
                     .then(response => (this.rowperson = response.data))
             },
 
             addperson: function () {
                   if (this.date1 != '' && this.date2 != '') {
-                axios.get('http://192.168.4.3/webapp/tee/drugs//refill_report.php', {
+                axios.get('http://192.168.4.3/webapp/tee/drugs/refill_report.php', {
                             params: {
                                 date1: this.date1,
                                 date2: this.date2

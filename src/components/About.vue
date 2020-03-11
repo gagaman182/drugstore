@@ -295,7 +295,7 @@
     methods: {
       persontable() {
         axios
-          .get('http://192.168.4.3/webapp/tee/drugs//person_my.php')
+          .get('http://192.168.4.3/webapp/tee/drugs/person_my.php')
           .then(response => (this.rowperson = response.data))
       },
 
@@ -303,7 +303,7 @@
 
       PersonClick(params) {
 
-        axios.get('http://192.168.4.3/webapp/tee/drugs//service_my.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/service_my.php', {
             params: {
               hn: params.row.hn
 
@@ -323,7 +323,7 @@
 
       ServiceClick(params) {
 
-        axios.get('http://192.168.4.3/webapp/tee/drugs//diag_my.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/diag_my.php', {
             params: {
               startvn: params.row.startvn
 
@@ -335,7 +335,7 @@
 
           })
 
-        axios.get('http://192.168.4.3/webapp/tee/drugs//drug_my.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/drug_my.php', {
             params: {
               startvn: params.row.startvn
 
@@ -347,7 +347,7 @@
 
           })
 
-        axios.get('http://192.168.4.3/webapp/tee/drugs//refill_my.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/refill_my.php', {
             params: {
               startvn: params.row.startvn
 
@@ -360,7 +360,7 @@
 
           })
 
-        axios.get('http://192.168.4.3/webapp/tee/drugs//refill2_my.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/refill2_my.php', {
             params: {
               startvn: params.row.startvn
 

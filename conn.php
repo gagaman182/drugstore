@@ -1,14 +1,5 @@
 <?php
 
-
-// $conn = @mysql_connect('192.168.4.3','root','1234');
-
-// if (!$conn) {
-// 	die('Could not connect: ' . mysql_error());
-// }
-// mysql_select_db('drugs', $conn);
-// mysql_query("SET NAMES UTF8");
-
 $servername = "192.168.4.3";
 $username = "root";
 $password = "1234";

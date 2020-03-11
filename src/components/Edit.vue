@@ -472,7 +472,7 @@
             }else{
                
           
-            axios.get('http://192.168.4.3/webapp/tee/drugs//person_my_update.php', {
+            axios.get('http://192.168.4.3/webapp/tee/drugs/person_my_update.php', {
                     params: {
                         num: this.id //num last
 
@@ -512,7 +512,7 @@
 
 
                     // multiselect vn code
-                    axios.get('http://192.168.4.3/webapp/tee/drugs//vn.php', {
+                    axios.get('http://192.168.4.3/webapp/tee/drugs/vn.php', {
                             params: {
                                 hn: this.hn
                             }
@@ -530,7 +530,7 @@
                     //doctor code from mysql
                 })
             axios
-                .get('http://192.168.4.3/webapp/tee/drugs//doctor.php')
+                .get('http://192.168.4.3/webapp/tee/drugs/doctor.php')
                 .then(response => (
                     this.options = response.data
                     // this.options = this.doctor
@@ -582,7 +582,7 @@
             //diag 
             getdiag: function () {
                 // multiselect
-                axios.get('http://192.168.4.3/webapp/tee/drugs//diag_my_update.php', {
+                axios.get('http://192.168.4.3/webapp/tee/drugs/diag_my_update.php', {
                         params: {
                             vn: this.vnuse
                         }
@@ -596,7 +596,7 @@
 
             getdrug: function () {
                 // multiselect
-                axios.get('http://192.168.4.3/webapp/tee/drugs//drug_my_update.php', {
+                axios.get('http://192.168.4.3/webapp/tee/drugs/drug_my_update.php', {
                         params: {
                             vn: this.vnuse
                         }
@@ -619,7 +619,7 @@
                 //  alert(this.hn)
                 //  alert(value.vn)
 
-                axios.get('http://192.168.4.3/webapp/tee/drugs//diag.php', {
+                axios.get('http://192.168.4.3/webapp/tee/drugs/diag.php', {
                         params: {
                             hn: this.hn,
                             vn: value.vn
@@ -630,7 +630,7 @@
                         this.diag = response.data
                     })
 
-                axios.get('http://192.168.4.3/webapp/tee/drugs//drug.php', {
+                axios.get('http://192.168.4.3/webapp/tee/drugs/drug.php', {
                         params: {
                             hn: this.hn,
                             vn: value.vn
@@ -678,7 +678,7 @@
 
                     //     })
                     //services
-                    axios.get('http://192.168.4.3/webapp/tee/drugs//service_my_delete.php', {
+                    axios.get('http://192.168.4.3/webapp/tee/drugs/service_my_delete.php', {
                             params: {
                                 hn: this.hn,
                                 vn: this.startvn.opdtime,
@@ -693,7 +693,7 @@
                         })
 
                     //diag
-                    axios.get('http://192.168.4.3/webapp/tee/drugs//service_my_delete.php', {
+                    axios.get('http://192.168.4.3/webapp/tee/drugs/service_my_delete.php', {
                             params: {
                                 hn: this.hn,
                                 vn: this.startvn.opdtime,
@@ -710,7 +710,7 @@
 
                         })
                     //drug
-                    axios.get('http://192.168.4.3/webapp/tee/drugs//service_my_delete.php', {
+                    axios.get('http://192.168.4.3/webapp/tee/drugs/service_my_delete.php', {
                             params: {
                                 hn: this.hn,
                                 vn: this.startvn.opdtime,
@@ -734,7 +734,7 @@
             //update ทั้งหมด
             updateall: function () {
                 //  alert(this.id)
-                axios.get('http://192.168.4.3/webapp/tee/drugs//update_all.php', {
+                axios.get('http://192.168.4.3/webapp/tee/drugs/update_all.php', {
                         params: {
                             num: this.id,
                             hn: this.hn,
@@ -779,7 +779,7 @@
 
                     })
                 // ลบ diag drug ก่อน
-                axios.get('http://192.168.4.3/webapp/tee/drugs//diagdrugdeleteupdate.php', {
+                axios.get('http://192.168.4.3/webapp/tee/drugs/diagdrugdeleteupdate.php', {
                         params: {
                             num: this.id,
 
@@ -794,7 +794,7 @@
 
                 // add in diags table
                 for (this.idiag = 0; this.idiag < this.diag.length; this.idiag++) {
-                    axios.get('http://192.168.4.3/webapp/tee/drugs//adddiag.php', {
+                    axios.get('http://192.168.4.3/webapp/tee/drugs/adddiag.php', {
                             params: {
                                 icdcode: this.diag[this.idiag].ICD_CODE,
                                 icdtype: this.diag[this.idiag].NAME,
@@ -812,7 +812,7 @@
 
                 // add in drugs table
                 for (this.idrug = 0; this.idrug < this.drug.length; this.idrug++) {
-                    axios.get('http://192.168.4.3/webapp/tee/drugs//adddrug.php', {
+                    axios.get('http://192.168.4.3/webapp/tee/drugs/adddrug.php', {
                             params: {
                                 drugcode: this.drug[this.idrug].CODE,
                                 drugname: this.drug[this.idrug].NAME,

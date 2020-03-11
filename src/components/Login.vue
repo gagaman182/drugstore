@@ -198,7 +198,7 @@
   
   
   
-        axios.get('http://192.168.4.3/webapp/tee/drugs//logincheck.php', {
+        axios.get('http://192.168.4.3/webapp/tee/drugs/logincheck.php', {
   
   
   
