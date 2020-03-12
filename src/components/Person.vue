@@ -252,7 +252,7 @@
             popupdelperson(append = false) {
                 this.toastCount++
 
-                this.$bvToast.toast('ลบข้อมูลบุคคลสำเร็จ' + this.ok[0].message, {
+                this.$bvToast.toast( this.ok[0].message, {
                     title: 'แจ้งเตือนการลบ',
                     autoHideDelay: 5000,
                     appendToast: append

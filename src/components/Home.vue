@@ -615,10 +615,10 @@
         this.form.seedoctordate1 = ''
         this.nextdrug.drugrefill3m = ''
         this.nextdrug.drugrefill6m = ''
-
+        this.$router.push('/about')
         this.allRecords();
 
-        this.$router.push('/about')
+     
 
         // this.$refs.diagtable.refresh()
         // this.$refs.drugtable.refresh()
