@@ -11,7 +11,7 @@
 
 
 
- $sql = "select * from person";
+ $sql = "select * from person order by id";
 // $result = mysqli_query($conn,$sql);
 
 
