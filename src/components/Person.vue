@@ -242,7 +242,7 @@
 
                     this.clearform()
                     this.popupdelperson()
-
+                     
 
                 }
             },
@@ -271,7 +271,7 @@
                 this.rounds = ''
                 this.address = ''
 
-
+                this.$router.push('/about')   
             }
         }
 

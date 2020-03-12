@@ -141,7 +141,7 @@
                         <b-badge variant="danger">วันที่จะ refill ครั้งที่1</b-badge>
                       </h4>
                     </div>
-                    <h4> {{form.drugrefill3m}}</h4>
+                    <h4> {{nextdrug.drugrefill3m}}</h4>
 
                   </b-col>
                   <b-col>
@@ -154,7 +154,7 @@
                         <b-badge variant="danger">วันที่จะ refill ครั้งที่2</b-badge>
                       </h4>
                     </div>
-                    <h4> {{form.drugrefill6m}}</h4>
+                    <h4> {{nextdrug.drugrefill6m}}</h4>
 
                   </b-col>
                   <b-col>
@@ -403,6 +403,10 @@
         tel: '',
         idcard: '',
         address: '',
+        nextdrug:{
+            drugrefill3m: '',
+          drugrefill6m: '',
+        },
         form: {
           doctor: { //multiselect1
             doccode: 'เลข ว.',
@@ -411,8 +415,7 @@
           doctoruse: '',
           drugstore: null,
           startdrug: '',
-          drugrefillm3: '',
-          drugrefillm6: '',
+        
           startdrug2: '',
           startvn: { //multiselect2
             vn: 'vn',
@@ -481,6 +484,10 @@
       }
     },
     methods: {
+      //เลื่อนไปบนสุดของหน้าจอ
+      scrollToTop() {
+                window.scrollTo(0,0);
+           },
       // table resfresh
       toggleBusy() {
         this.isBusy = !this.isBusy
@@ -493,8 +500,8 @@
         this.toggleBusy()
         this.form.startdrug = value.opdtime
 
-        this.form.drugrefill3m = moment(value.opdtime, 'YYYY/MM/DD ').add('days', 60).format('YYYY/MM/DD ')
-        this.form.drugrefill6m = moment(value.opdtime, 'YYYY/MM/DD ').add('days', 120).format('YYYY/MM/DD ')
+        this.nextdrug.drugrefill3m = moment(value.opdtime, 'YYYY/MM/DD ').add('days', 60).format('YYYY/MM/DD ')
+        this.nextdrug.drugrefill6m = moment(value.opdtime, 'YYYY/MM/DD ').add('days', 120).format('YYYY/MM/DD ')
         this.form.startvnuse = value.vn
 
         axios.get('http://192.168.4.3/webapp/tee/drugs/diag.php', {
@@ -563,7 +570,7 @@
       },
       //clear form
       clearform: function () {
-
+        this.scrollToTop()
         this.search = ''
         this.hn = ''
         this.name = ''
@@ -572,27 +579,46 @@
         this.tel = ''
         this.address = ''
         this.form.rounds = ''
-        this.form.doctor = ''
+        //  this.form.doctor = ''
+         this.form.doctor.doccode = 'เลข ว.'
+        this.form.doctor.name = 'ชื่อ-สกุล'
         this.form.drugstore = ''
-        this.form.startvn = ''
+        // this.form.startvn = ''
+         this.form.startvn.vn = 'vn'
+         this.form.startvn.opdtime = 'วัน'
+         this.form.startvn.pla = 'ห้องตรวจ'
         this.form.startdrug = ''
-        this.diag = ''
-        this.drug = ''
+        // this.diag = ''
+        // this.drug = ''
+        this.diag.ROWNUM = ''
+        this.diag.ICD_CODE = ''
+        this.diag.NAME = ''
+        this.drug.CODE = ''
+        this.drug.NAME = ''
+        this.drug.QUANTITY= ''
         this.form.refill1 = ''
-        this.form.refill1vn = ''
+        //  this.form.refill1vn = ''
+         this.form.refill1vn.vn = 'vn'
+         this.form.refill1vn.opdtime = 'วัน'
+         this.form.refill1vn.pla = 'ห้องตรวจ'
         this.form.getdrug1 = ''
         this.form.getdrugdate1 = ''
         this.form.refill2 = ''
-        this.form.refill2vn = ''
+        //  this.form.refill2vn = ''
+         this.form.refill2vn.vn = 'vn'
+         this.form.refill2vn.opdtime = 'วัน'
+         this.form.refill2vn.pla = 'ห้องตรวจ'
         this.form.getdrug2 = ''
         this.form.getdrugdate2 = ''
         this.form.appointdocotor1 = ''
         this.form.seedoctor1 = ''
         this.form.seedoctordate1 = ''
-        this.form.drugrefillm3 = ''
-        this.from.drugrefillm6 = ''
+        this.nextdrug.drugrefill3m = ''
+        this.nextdrug.drugrefill6m = ''
 
         this.allRecords();
+
+        this.$router.push('/about')
 
         // this.$refs.diagtable.refresh()
         // this.$refs.drugtable.refresh()
@@ -659,8 +685,8 @@
                 seedoctor1: this.form.seedoctor1,
                 seedoctordate1: this.form.seedoctordate1,
                 rounds: this.form.rounds,
-                drugrefill3m: this.form.drugrefill3m,
-                drugrefill6m: this.form.drugrefill6m
+                drugrefill3m: this.nextdrug.drugrefill3m,
+                drugrefill6m: this.nextdrug.drugrefill6m
 
               }
             })
@@ -720,7 +746,8 @@
               this.servicenum = response.data
 
             })
-        
+
+         
 
         } else {
 
@@ -809,6 +836,10 @@
 
     },
     mounted() {
+       //เลื่อนไปบนสุดของหน้าจอ
+     
+                window.scrollTo(0,0);
+           
         // session login
         this.form.token = JSON.parse(localStorage.getItem('token'));
         

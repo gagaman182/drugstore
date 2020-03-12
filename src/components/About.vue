@@ -283,6 +283,10 @@
       }
     },
     mounted() {
+       //เลื่อนไปบนสุดของหน้าจอ
+     
+                window.scrollTo(0,0);
+           
        // session login
                 this.form.token = JSON.parse(localStorage.getItem('token'));
         

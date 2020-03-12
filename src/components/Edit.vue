@@ -303,7 +303,7 @@
 
                         </b-form>
 
-                        <!-- <pre class="m-0">{{showdate60120}}</pre> -->
+                         <pre class="m-0">{{addok}}</pre>
 
 
 
@@ -464,6 +464,10 @@
 
         },
         mounted() {
+              //เลื่อนไปบนสุดของหน้าจอ
+     
+                window.scrollTo(0,0);
+           
                     // session login
                 this.form.token = JSON.parse(localStorage.getItem('token'));
         
@@ -689,6 +693,7 @@
                         .then(response => {
 
                             this.addok = response.data
+                            this.popupdelservice()
 
                         })
 
@@ -704,8 +709,8 @@
                         .then(response => {
 
                             this.addok = response.data
-
-
+             
+                            this.popupdeldiag()
 
 
                         })
@@ -721,13 +726,18 @@
                         .then(response => {
 
                             this.addok = response.data
-
+                            this.popupdeldrug()
 
                         })
-                    this.clearform()
-                    this.popupdelservice()
-                    this.popupdeldiag()
-                    this.popupdeldrug()
+                        
+                            this.clearform()
+                  
+                 
+                    
+                   
+                      this.$router.push('/about')
+                    
+                   
 
                 }
             },
@@ -775,6 +785,9 @@
                         this.popupupdateservice()
                         this.popupupdatediag()
                         this.popupupdatedrug()
+                            //เลื่อนไปบนสุดของหน้าจอ
+     
+                                window.scrollTo(0,0);
 
 
                     })
@@ -846,7 +859,9 @@
                     title: 'แจ้งเตือนการอัพเดทข้อมูล',
                     autoHideDelay: 5000,
                     appendToast: append
+                    
                 })
+               
             },
             popupupdatediag(append = false) {
                 this.toastCount++
@@ -866,19 +881,19 @@
                     appendToast: append
                 })
             },
-            popupdelperson(append = false) {
-                this.toastCount++
+            // popupdelperson(append = false) {
+            //     this.toastCount++
 
-                this.$bvToast.toast(this.addok[0].message, {
-                    title: 'แจ้งเตือนการลบ',
-                    autoHideDelay: 5000,
-                    appendToast: append
-                })
-            },
+            //     this.$bvToast.toast(this.addok[0].message, {
+            //         title: 'แจ้งเตือนการลบ',
+            //         autoHideDelay: 5000,
+            //         appendToast: append
+            //     })
+            // },
             popupdelservice(append = false) {
                 this.toastCount++
 
-                this.$bvToast.toast(this.addok[1].message2, {
+                this.$bvToast.toast(this.addok[0].message2, {
                     title: 'แจ้งเตือนการลบ',
                     autoHideDelay: 5000,
                     appendToast: append
@@ -887,7 +902,7 @@
             popupdeldiag(append = false) {
                 this.toastCount++
 
-                this.$bvToast.toast(this.addok[2].message3, {
+                this.$bvToast.toast(this.addok[0].message3, {
                     title: 'แจ้งเตือนการลบ',
                     autoHideDelay: 5000,
                     appendToast: append
@@ -896,7 +911,7 @@
             popupdeldrug(append = false) {
                 this.toastCount++
 
-                this.$bvToast.toast(this.addok[3].message4, {
+                this.$bvToast.toast(this.addok[0].message4, {
                     title: 'แจ้งเตือนการลบ',
                     autoHideDelay: 5000,
                     appendToast: append
@@ -932,7 +947,7 @@
                 this.drug = ''
                 this.drugrefill3m = ''
                 this.drugrefill6m = ''
-
+               
 
                 this.$refs.diagtable.refresh()
                 this.$refs.drugtable.refresh()
