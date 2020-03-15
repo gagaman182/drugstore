@@ -14,6 +14,9 @@ import moment from 'moment'
 //search text box
 import VueBootstrapTypeahead from 'vue-bootstrap-typeahead'
 
+// chart
+import VueApexCharts from 'vue-apexcharts'
+
 
 import App from './App.vue'
 import VueRouter from 'vue-router'
@@ -63,6 +66,9 @@ Vue.component('vue-bootstrap-typeahead', VueBootstrapTypeahead)
 Vue.use(VueRouter)
     //good table
 Vue.use(VueGoodTablePlugin);
+//chart
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
 
 const routes = [
     { path: '/', component: Home },

@@ -1,23 +1,34 @@
 <template>
   <div>
-    <b-container>
-      <b-form-group>
+    <b-row>
+      <b-col cols="6">
+        <b-form-group>
+          <b-card class="mt-3 ">
+            <template v-slot:header>
+              <h5 class="mb-0">ข้อมูลบุคคล</h5>
+            </template>
+
+            <vue-good-table :columns="columnperson" :rows="rowperson" :search-options="{ enabled: true }"
+              @on-row-click="PersonClick" @on-row-dblclick="onRowDoubleClickperson" ref="persontableref"
+              :pagination-options="{ enabled: true,}" :totalRows="totalRecords" :isLoading.sync="isLoading" />
+
+          </b-card>
+          <b-alert show variant="primary">
+            <b-badge>Click</b-badge> ที่ข้อมูลเพื่อแสดงข้อมูลบริการ<br>
+            <b-badge>Double Click</b-badge> เพื่อดูรายละเอียดบุคล
+          </b-alert>
+        </b-form-group>
+      </b-col>
+      <b-col cols="6">
         <b-card class="mt-3 ">
-          <template v-slot:header>
-            <h5 class="mb-0">ข้อมูลบุคคล</h5>
-          </template>
-
-          <vue-good-table :columns="columnperson" :rows="rowperson" :search-options="{ enabled: true }"
-            @on-row-click="PersonClick" @on-row-dblclick="onRowDoubleClickperson" ref="persontableref"
-            :pagination-options="{ enabled: true,}" :totalRows="totalRecords" :isLoading.sync="isLoading" />
-
+            <template v-slot:header>
+              <h5 class="mb-0">กราฟแสดงจำนวนคนไข้</h5>
+            </template>
+          <apexchart type="bar" height="350" :options="chartOptions" :series="series"></apexchart>
         </b-card>
-        <b-alert show variant="primary">
-          <b-badge>Click</b-badge> ที่ข้อมูลเพื่อแสดงข้อมูลบริการ<br>
-          <b-badge>Double Click</b-badge> เพื่อดูรายละเอียดบุคล
-        </b-alert>
-      </b-form-group>
-    </b-container>
+      </b-col>
+    </b-row>
+
 
     <!-- Content here -->
     <b-form-group>
@@ -98,8 +109,61 @@
 
   export default {
     name: 'maintable',
+
     data() {
       return {
+        // chart
+        series: [{
+          name: '',
+          data: [0]
+        }, {
+          name: '',
+          data: [0]
+        }, {
+          name: '',
+          data: [0]
+        }],
+        chartOptions: {
+          chart: {
+            type: 'bar',
+            height: 350
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: '55%',
+              endingShape: 'rounded'
+            },
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+          },
+          xaxis: {
+            categories: ['สถานะการรับยา'],
+          },
+          yaxis: {
+            title: {
+              text: 'จำนวนคนไข้'
+            }
+          },
+          fill: {
+            opacity: 1
+          },
+          tooltip: {
+            y: {
+              formatter: function (val) {
+                return "$ " + val + " thousands"
+              }
+            }
+          }
+        },
+
+
         totalRecords: 0,
         // table person
         columnperson: [{
@@ -274,27 +338,34 @@
         ],
         rowrefill2: [],
         addok: '',
-         form: {
-            token:'',
-         
+        form: {
+          token: '',
+
         }
 
 
       }
     },
     mounted() {
-       //เลื่อนไปบนสุดของหน้าจอ
-     
-                window.scrollTo(0,0);
-           
-       // session login
-                this.form.token = JSON.parse(localStorage.getItem('token'));
-        
-            if(this.form.token == undefined){
-                  this.$router.push('/login')
-            }else{
-      this.persontable()
-            }
+      // chart
+      axios.get('http://localhost/0161/vue/drugs/charts.php')
+        .then(response => {
+          // JSON responses are automatically parsed.
+          this.series = response.data
+
+        })
+      //เลื่อนไปบนสุดของหน้าจอ
+
+      window.scrollTo(0, 0);
+
+      // session login
+      this.form.token = JSON.parse(localStorage.getItem('token'));
+
+      if (this.form.token == undefined) {
+        this.$router.push('/login')
+      } else {
+        this.persontable()
+      }
     },
     methods: {
       persontable() {
@@ -410,7 +481,7 @@
         //this.$router.push('/edit/' + params.row.num)
       },
       onRowDoubleClickperson(params) {
-       
+
 
 
         this.$router.push('/person/' + params.row.id)
