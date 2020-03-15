@@ -695,6 +695,7 @@
               this.popupadd()
               this.popupaddservice()
               this.clearform()
+               this.$router.push('/about')
 
 
             })

@@ -348,7 +348,7 @@
     },
     mounted() {
       // chart
-      axios.get('http://localhost/0161/vue/drugs/charts.php')
+      axios.get('http://192.168.4.3/webapp/tee/drugs/charts.php')
         .then(response => {
           // JSON responses are automatically parsed.
           this.series = response.data
