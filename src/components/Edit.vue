@@ -92,11 +92,14 @@
                                 <b-row>
                                     <b-col sm="2">
 
-                                        <b-form-group id="input-group-17" label="รอบที่ร่วมโครงการ:"
+                                        <!-- <b-form-group id="input-group-17" label="รอบที่ร่วมโครงการ:"
                                             label-for="input-17">
                                             <b-form-radio v-model="rounds" value="รอบ1">รอบ1</b-form-radio>
                                             <b-form-radio v-model="rounds" value="รอบ2">รอบ2 </b-form-radio>
-                                        </b-form-group>
+                                        </b-form-group> -->
+                                         <b-form-group id="input-group-17" label="ปีงบ:" label-for="input-17">
+                  <b-form-select v-model="year" :options="years" placeholder="ปี" ></b-form-select>
+                   </b-form-group> 
 
                                     </b-col>
                                     <b-col>
@@ -360,6 +363,16 @@
                 idcard: '',
                 address: '',
                 rounds: '',
+                 year: null,
+        years: [
+          { value: null, text: 'ปี' },
+          { value: '2563', text: '2563' },
+          { value: '2564', text: '2564' },
+          { value: '2565', text: '2565' },
+          { value: '2566', text: '2566' },
+          { value: '2567', text: '2567' },
+        
+        ],
                 updateperson: '',
                 options: '', //multiselect1 doctor
                 doctor: { //multiselect1
@@ -491,7 +504,7 @@
                     this.sex = this.updateperson[0].sex
                     this.idcard = this.updateperson[0].idcard
                     this.tel = this.updateperson[0].tel
-                    this.rounds = this.updateperson[0].rounds
+                    this.year = this.updateperson[0].year
                     this.address = this.updateperson[0].address
                     this.drugstore = this.updateperson[0].drugstore
                     this.doctor.doccode = this.updateperson[0].doctor
@@ -752,7 +765,7 @@
                             sex: this.sex,
                             idcard: this.idcard,
                             tel: this.tel,
-                            rounds: this.rounds,
+                            year: this.year,
                             drugstore: this.drugstore,
                             doctor: this.doctor.doccode,
                             startdrug: this.startdrug,
@@ -926,7 +939,7 @@
                 this.sex = ''
                 this.idcard = ''
                 this.tel = ''
-                this.rounds = ''
+                this.year = ''
                 this.address = ''
                 this.drugstore = ''
                 this.doctor.doccode = ''

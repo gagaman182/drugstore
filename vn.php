@@ -10,7 +10,7 @@ $data=array();
 
 $strSQL  = "select * from (
 	SELECT
-to_char(opd_time,'yyyy-mm-dd') as opdtime,
+to_char(DATETIME,'yyyy-mm-dd') as opdtime,
 PLA_PLACECODE1,
 OPD_FINANCE_NO as vn
 	FROM

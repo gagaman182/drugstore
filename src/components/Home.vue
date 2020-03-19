@@ -104,11 +104,13 @@
               <b-row>
                 <b-col sm="2">
 
-                  <b-form-group id="input-group-17" label="รอบที่ร่วมโครงการ:" label-for="input-17">
+                  <!-- <b-form-group id="input-group-17" label="รอบที่ร่วมโครงการ:" label-for="input-17">
                     <b-form-radio v-model="form.rounds" value="รอบ1">รอบ1</b-form-radio>
                     <b-form-radio v-model="form.rounds" value="รอบ2">รอบ2 </b-form-radio>
-                  </b-form-group>
-
+                  </b-form-group> -->
+                    <b-form-group id="input-group-17" label="ปีงบ:" label-for="input-17">
+                  <b-form-select v-model="year" :options="years" placeholder="ปี" ></b-form-select>
+                   </b-form-group> 
                 </b-col>
                 <b-col>
                   <b-form-group id="input-group-0" label="แพทย์ที่ส่งตัว:" label-for="input-8">
@@ -403,6 +405,16 @@
         tel: '',
         idcard: '',
         address: '',
+        year: null,
+        years: [
+          { value: null, text: 'ปี' },
+          { value: '2563', text: '2563' },
+          { value: '2564', text: '2564' },
+          { value: '2565', text: '2565' },
+          { value: '2566', text: '2566' },
+          { value: '2567', text: '2567' },
+        
+        ],
         nextdrug:{
             drugrefill3m: '',
           drugrefill6m: '',
@@ -579,6 +591,7 @@
         this.tel = ''
         this.address = ''
         this.form.rounds = ''
+        this.year=''
         //  this.form.doctor = ''
          this.form.doctor.doccode = 'เลข ว.'
         this.form.doctor.name = 'ชื่อ-สกุล'
@@ -684,7 +697,8 @@
                 getdrugdate2: this.form.getdrugdate2,
                 seedoctor1: this.form.seedoctor1,
                 seedoctordate1: this.form.seedoctordate1,
-                rounds: this.form.rounds,
+                // rounds: this.form.rounds,
+                year:this.year,
                 drugrefill3m: this.nextdrug.drugrefill3m,
                 drugrefill6m: this.nextdrug.drugrefill6m
 

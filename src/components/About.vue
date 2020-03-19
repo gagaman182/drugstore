@@ -24,7 +24,7 @@
             <template v-slot:header>
               <h5 class="mb-0">กราฟแสดงจำนวนคนไข้</h5>
             </template>
-          <apexchart type="bar" height="350" :options="chartOptions" :series="series"></apexchart>
+          <apexchart type="bar" height="400"  :options="chartOptions" :series="series"></apexchart>
         </b-card>
       </b-col>
     </b-row>
@@ -126,12 +126,12 @@
         chartOptions: {
           chart: {
             type: 'bar',
-            height: 350
+            height: 50
           },
           plotOptions: {
             bar: {
               horizontal: false,
-              columnWidth: '55%',
+              columnWidth: '40%',
               endingShape: 'rounded'
             },
           },
@@ -202,8 +202,8 @@
           },
 
           {
-            label: 'รอบที่',
-            field: 'rounds',
+            label: 'ปีงบ',
+            field: 'year',
           },
           {
             label: 'วันที่เริ่มรับยาที่ รพ.',

@@ -10,7 +10,7 @@
 	 $idcard = $_GET["idcard"];
 	 $tel = $_GET["tel"];
 
-	 $rounds = $_GET["rounds"];
+	 $year = $_GET["year"];
 	 $drugstore = $_GET["drugstore"];
 	 $doctor = $_GET["doctor"];
 	 $startdrug = $_GET["startdrug"];
@@ -59,7 +59,7 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-$sql2 = "UPDATE services SET rounds='".$rounds."' ,drugstore = '".$drugstore."', doctor = '".$doctor."' ,startdrug = '".$startdrug."',startvn = '".$startvn."' ,
+$sql2 = "UPDATE services SET year='".$year."' ,drugstore = '".$drugstore."', doctor = '".$doctor."' ,startdrug = '".$startdrug."',startvn = '".$startvn."' ,
 refill1vn = '".$refill1vn."',refill1 = '".$refill1."',getdrug1 = '".$getdrug1."',getdrugdate1 = '".$getdrugdate1."',refill2vn = '".$refill2vn."',refill2 = '".$refill2."',
 getdrug2 = '".$getdrug2."',getdrugdate2 = '".$getdrugdate2."',appointdocotor1 = '".$appointdocotor1."',seedoctor1 = '".$seedoctor1."',seedoctordate1 = '".$seedoctordate1."',
 datemonth3 = DATE_ADD('".$drugrefillm3."',INTERVAL 60 DAY),datemonth6 = DATE_ADD('".$drugrefillm6."',INTERVAL 120 DAY)

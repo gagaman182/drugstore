@@ -28,7 +28,8 @@ $startvn = $_GET["startvn"];
  $getdrugdate1 = $_GET["getdrugdate1"];
  $seedoctor1 = $_GET["seedoctor1"];
  $seedoctordate1 = $_GET["seedoctordate1"];
- $rounds = $_GET["rounds"];
+//  $rounds = $_GET["rounds"];
+$year = $_GET["year"];
  $getdrug2 = $_GET["getdrug2"];
  $getdrugdate2 = $_GET["getdrugdate2"];
 
@@ -79,9 +80,9 @@ if (isset($hn)) {
 	  }
 	  
 	  //insert service
-$strservice  = " INSERT INTO services(num,hn,doctor,drugstore,startdrug,startvn,refill1,refill1vn,refill2,refill2vn,appointdocotor1,stamptime,getdrug1,getdrugdate1,seedoctor1,seedoctordate1,rounds,getdrug2,getdrugdate2,datemonth3,datemonth6) 
+$strservice  = " INSERT INTO services(num,hn,doctor,drugstore,startdrug,startvn,refill1,refill1vn,refill2,refill2vn,appointdocotor1,stamptime,getdrug1,getdrugdate1,seedoctor1,seedoctordate1,year,getdrug2,getdrugdate2,datemonth3,datemonth6) 
 VALUES('".$num."','".$hn."','".$doctor."','".$drugstore."','".$startdrug."','".$startvn."','".$refill1."','".$refill1vnuse."','".$refill2."','".$refill2vnuse."','".$appointdocotor1."','".$date."','".$getdrug1."','".$getdrugdate1."','".$seedoctor1."',
-'".$seedoctordate1."','".$rounds."','".$getdrug2."','".$getdrugdate2."','".$drugrefill3m."','".$drugrefill6m."')";
+'".$seedoctordate1."','".$year."','".$getdrug2."','".$getdrugdate2."','".$drugrefill3m."','".$drugrefill6m."')";
 	
 		if ($conn->query($strservice) === TRUE) {
 			// echo "ระบบทำงานเสร็จสมบูรณ์";

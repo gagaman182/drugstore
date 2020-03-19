@@ -22,9 +22,9 @@ $return_arr = array();
 
 if ($result = mysqli_query( $conn, $sql )){
     while ($row = mysqli_fetch_assoc($result)) {
-  $row_array['num'] = $row['num'];
+    $row_array['num'] = $row['num'];
 	$row_array['hn'] = $row['hn'];
-	$row_array['rounds'] = $row['rounds'];
+	$row_array['year'] = $row['year'];
 	$row_array['startdrug'] = $row['startdrug'];
 	$row_array['startvn'] = $row['startvn'];
 	$row_array['appointdocotor1'] = $row['appointdocotor1'];

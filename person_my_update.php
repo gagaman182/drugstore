@@ -19,7 +19,7 @@ person.sex,
 person.idcard,
 person.tel,
 person.address,
-services.rounds,
+services.year,
 services.num,
 services.drugstore,
 services.doctor,
@@ -58,7 +58,7 @@ if ($result = mysqli_query( $conn, $sql )){
 	$row_array['sex'] = $row['sex'];
 	$row_array['idcard'] = $row['idcard'];
 	$row_array['tel'] = $row['tel'];
-	$row_array['rounds'] = $row['rounds'];
+	$row_array['year'] = $row['year'];
 	$row_array['address'] = $row['address'];
 	$row_array['num'] = $row['num'];
 	$row_array['drugstore'] = $row['drugstore'];
